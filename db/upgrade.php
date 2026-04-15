@@ -36,7 +36,6 @@ function xmldb_tool_userdebug_upgrade($oldversion) {
     $dbman = $DB->get_manager();
 
     if ($oldversion < 2024050900) {
-
         $settings = [
             'users',
             'mode',

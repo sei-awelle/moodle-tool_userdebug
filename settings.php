@@ -25,7 +25,12 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($hassiteconfig) {
-    $ADMIN->add('development', new admin_externalpage('tool_userdebug',
-        get_string('pluginname', 'tool_userdebug'),
-        new moodle_url('/admin/tool/userdebug/index.php')));
+    $ADMIN->add(
+        'development',
+        new admin_externalpage(
+            'tool_userdebug',
+            get_string('pluginname', 'tool_userdebug'),
+            new moodle_url('/admin/tool/userdebug/index.php')
+        )
+    );
 }

@@ -123,7 +123,6 @@ class util {
                 $PAGE->requires->js_call_amd('tool_userdebug/debuginfo', 'init', [$infocontent]);
             }
         }
-
     }
 
     /**

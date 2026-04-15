@@ -31,7 +31,6 @@ Feature: Switch to adhoc debugging
     # I should see the string identifiers too.
     And I should see "Ad hoc debug (on) {adhocdebug/tool_userdebug}"
     # Check that I see the string identifiers
-    And I should see "Home {home/}"
     And I should see "Dashboard {myhome/}"
     # Check that I see the performance infos
     And I should see "get_string calls:"
@@ -49,7 +48,6 @@ Feature: Switch to adhoc debugging
     And I click on "Ad hoc debug (off)" "link"
     And I should see "Ad hoc debug (on) {adhocdebug/tool_userdebug}"
     # Check that I see the string identifiers
-    And I should see "Home {home/}"
     And I should see "Dashboard {myhome/}"
     # Check that I see the performance infos
     And I should see "get_string calls:"

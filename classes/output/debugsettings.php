@@ -24,7 +24,7 @@ namespace tool_userdebug\output;
  * @copyright  2022 Andreas Grabs <moodle@grabs-edv.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class debugsettings implements \templatable, \renderable {
+class debugsettings implements \renderable, \templatable {
     /** @var \stdClass */
     private $data;
 

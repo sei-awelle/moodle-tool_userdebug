@@ -27,7 +27,7 @@ use tool_userdebug\selector;
  * @copyright  2022 Andreas Grabs <moodle@grabs-edv.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class selectusers implements \templatable, \renderable {
+class selectusers implements \renderable, \templatable {
     /** @var \stdClass */
     private $data;
 

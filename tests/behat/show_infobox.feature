@@ -33,6 +33,7 @@ Feature: Show user debug infobox
     And I log out
     And I log in as "user1"
     # Check that I see the infobox
+    And I click on "#tool-userdebug-toggle-button" "css_element"
     And I should see "User debug mode is active!"
 
     # Remove the user from userdebug settings.

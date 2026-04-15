@@ -41,21 +41,25 @@
     }
 
 }}
-<div class="m-2">
-    <button id="closebutton-{{uniqid}}" title="{{#str}}closebuttontitle{{/str}}" type="button" class="close">&times;</button>
-    <h4>{{#str}} debugactiv, tool_userdebug {{/str}}</h4>
-    {{#manageurl}}
-        <div class="m-1">
-            <i class="fa fa-cog fa-fw"></i> <a href="{{.}}">{{#str}} settings {{/str}}</a>
-        </div>
-    {{/manageurl}}
-    <div class="d-flex flex-column border-top p-1">
-        {{#debugsettings}}
-            <div class="settings-item">
-                <strong>{{key}}:</strong> <span>{{value}}</span>
+<div class="m-1">
+    <div id="debugsettings-{{uniqid}}" class="collapse rounded p-1 bg-warning">
+        <h4>{{#str}} debugactiv, tool_userdebug {{/str}}</h4>
+        {{#manageurl}}
+            <div class="m-1">
+                <i class="fa fa-cog fa-fw"></i> <a href="{{.}}">{{#str}} settings {{/str}}</a>
             </div>
-        {{/debugsettings}}
+        {{/manageurl}}
+        <div class="d-flex flex-column border-top p-1">
+            {{#debugsettings}}
+                <div class="settings-item">
+                    <strong>{{key}}:</strong> <span>{{value}}</span>
+                </div>
+            {{/debugsettings}}
+        </div>
     </div>
+    <a id="tool-userdebug-toggle-button" href="#" class="float-end" data-bs-toggle="collapse" data-bs-target="#debugsettings-{{uniqid}}" aria-expanded="false" aria-controls="debugsettings-{{uniqid}}" title="{{#str}}adhocdebug, tool_userdebug, on {{/str}}">
+        {{#pix}}debugon, tool_userdebug, {{#str}} debugactiv, tool_userdebug {{/str}} {{/pix}}
+    </a>
 </div>
 {{#js}}
     document.querySelector('#closebutton-{{uniqid}}').addEventListener('click', () => {

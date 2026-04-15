@@ -36,7 +36,6 @@ namespace tool_userdebug;
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class hook_test extends \advanced_testcase {
-
     /**
      * Set up the test.
      *
@@ -89,5 +88,4 @@ final class hook_test extends \advanced_testcase {
         $title = get_string('adhocdebug', 'tool_userdebug', 'off');
         $this->assertStringContainsString($title, $output);
     }
-
 }
