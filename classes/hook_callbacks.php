@@ -49,8 +49,6 @@ class hook_callbacks {
      * @param extend_user_menu $hook
      */
     public static function extend_user_menu(extend_user_menu $hook): void {
-        if ($navitems = util::add_menuuser()) {
-            $hook->add_navitem($navitems);
-        }
+        util::add_menu_icon($hook);
     }
 }

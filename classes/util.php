@@ -247,23 +247,34 @@ class util {
     /**
      * Add an item in the navigation menu.
      *
-     * @return ?\stdClass The navigation item.
+     * @param \core_user\hook\extend_user_menu $hook The hook object we use to add the menu icon
+     * @return void
      */
-    public static function add_menuuser(): ?\stdClass {
+    public static function add_menu_icon(\core_user\hook\extend_user_menu $hook) {
         // Don't add the menuitem if PHPUNIT_TEST is running except we run it self.
         if (defined('PHPUNIT_TEST') && PHPUNIT_TEST && !defined('TOOL_USERDEBUG_RUN_IN_PHPUNIT_TEST')) {
-            return null;
+            return;
         }
 
         if (!$navigationnode = static::get_settings_node()) {
-            return null;
+            return;
         }
 
-        $content = new \stdClass();
-        $content->itemtype = 'link';
-        $content->title = $navigationnode->text;
-        $content->url = $navigationnode->action;
+        // Since Moodle 5.3 we use add_menu_item() instead of add_navitem().
+        if (method_exists($hook, 'add_menu_item')) {
+            $menuitem = new \core_user\output\user_action_menu\link(
+                $navigationnode->action(),
+                $navigationnode->text
+            );
 
-        return $content;
+            $hook->add_menu_item($menuitem);
+        } else {
+            $content = new \stdClass();
+            $content->itemtype = 'link';
+            $content->title = $navigationnode->text;
+            $content->url = $navigationnode->action;
+
+            $hook->add_navitem($content);
+        }
     }
 }
