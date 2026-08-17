@@ -24,8 +24,8 @@
  */
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2025070200;
-$plugin->release   = 'v5.0.2 (2026052600)';
+$plugin->version   = 2025070300;
+$plugin->release   = 'v5.0.3 (2026081700)';
 $plugin->requires  = 2025040800;
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->component = 'tool_userdebug';
