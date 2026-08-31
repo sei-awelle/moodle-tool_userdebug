@@ -42,7 +42,7 @@ class potential_selector extends \user_selector_base {
      */
     public function find_users($search) {
         global $CFG, $DB;
-        list($wherecondition, $params) = $this->search_sql($search, '');
+        [$wherecondition, $params] = $this->search_sql($search, '');
 
         $fields      = 'SELECT ' . $this->required_fields_sql('');
         $countfields = 'SELECT COUNT(1)';

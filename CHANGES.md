@@ -1,5 +1,13 @@
 ## Release notes
 
+### Release v5.0.3
+* compatibility to mdl 5.3
+* Removed unnecessary template javascript - Thanks to Daniel Poggenpohl (#22)
+
+### Release v5.0.2
+* compatibility to mdl 5.2
+* Optimized info box
+
 ### Release v5.0.1
 * Add missing capability check for menu item (#19)
 

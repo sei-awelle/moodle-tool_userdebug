@@ -25,6 +25,7 @@
  */
 
 namespace tool_userdebug;
+use core_user\hook\extend_user_menu;
 
 /**
  * Unit tests for general invitation features.
@@ -36,7 +37,6 @@ namespace tool_userdebug;
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class hook_test extends \advanced_testcase {
-
     /**
      * Set up the test.
      *
@@ -62,15 +62,35 @@ final class hook_test extends \advanced_testcase {
      * @covers \tool_userdebug\util
      * @return void
      */
-    public function test_add_menuuser(): void {
-        // Get the ad hoc debug node.
-        $navitems = \tool_userdebug\util::add_menuuser();
+    public function test_add_menu_icon(): void {
+        global $PAGE;
 
-        // Check the node includes all needed elements.
+        $PAGE->set_url(new \moodle_url('/'));
+        $PAGE->set_context(\context_system::instance());
+
+        $output = $PAGE->get_renderer('core', 'admin');
+
+        // Create an empty hook object.
+        $hook = new extend_user_menu([]);
+
+        // Add the meno icon to the hook object.
+        \tool_userdebug\util::add_menu_icon($hook);
+
+        // To check the node is created, we prepare a new menu item.
+        // Since Moodle 5.3 the new methode "get_menu_items" is introduced.
+        if (method_exists($hook, 'get_menu_items')) {
+            $items = $hook->get_menu_items();
+            $item = (object) $items[0]->export_for_template($output);
+        } else {
+            $items = $hook->get_navitems();
+            $item = $items[0];
+        }
         $title = get_string('adhocdebug', 'tool_userdebug', 'off');
-        $this->assertEquals('link', $navitems->itemtype);
-        $this->assertStringContainsString($title, $navitems->title);
-        $this->assertInstanceOf('moodle_url', $navitems->url);
+
+        // Check the attributes are ok.
+        $this->assertEquals(1, count($items));
+        $this->assertEquals('link', $item->itemtype);
+        $this->assertEquals($title, $item->title);
     }
 
     /**
@@ -89,5 +109,4 @@ final class hook_test extends \advanced_testcase {
         $title = get_string('adhocdebug', 'tool_userdebug', 'off');
         $this->assertStringContainsString($title, $output);
     }
-
 }

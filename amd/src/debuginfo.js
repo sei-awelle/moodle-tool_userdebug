@@ -37,12 +37,8 @@ export const init = (infocontent) => {
 
     templates.render(tmpl, infocontent).then(function(html, js) {
         banner.innerHTML = html;
-        banner.classList.add(
-            'tool-userdebug-infobox',
-            'border',
-            'rounded',
-            'bg-warning'
-        );
+        banner.classList.add('tool-userdebug-infobox');
+
         document.body.appendChild(banner);
         if (js) {
             templates.runTemplateJS(js);

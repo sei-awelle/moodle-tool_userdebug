@@ -26,7 +26,6 @@ Feature: Assign users to user related debugging
     And I log out
     And I log in as "user1"
     # Check that I see the string identifiers
-    And I should see "Home {home/}"
     And I should see "Dashboard {myhome/}"
     # Check that I see the performance infos
     And I should see "get_string calls:"

@@ -41,12 +41,12 @@ class selector extends \user_selector_base {
     public function find_users($search) {
         global $DB;
         $mycfg = get_config('tool_userdebug');
-        list($wherecondition, $params1) = $this->search_sql($search, '');
+        [$wherecondition, $params1] = $this->search_sql($search, '');
 
         $fields      = 'SELECT ' . $this->required_fields_sql('');
 
         $tooluserdebugusers      = clean_param_array(explode(',', $mycfg->users ?? ''), PARAM_INT);
-        list($debugid, $params2) = $DB->get_in_or_equal($tooluserdebugusers, SQL_PARAMS_NAMED, 'val');
+        [$debugid, $params2] = $DB->get_in_or_equal($tooluserdebugusers, SQL_PARAMS_NAMED, 'val');
 
         if ($wherecondition) {
             $wherecondition = "$wherecondition AND id $debugid";

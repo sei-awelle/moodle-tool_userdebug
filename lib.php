@@ -69,8 +69,13 @@ function tool_userdebug_extend_navigation_frontpage(navigation_node $parentnode,
  * @param  context_course  $coursecontext
  * @return void
  */
-function tool_userdebug_extend_navigation_user_settings(navigation_node $parentnode, stdClass $user, context_user $context,
-    stdClass $course, context_course $coursecontext) {
+function tool_userdebug_extend_navigation_user_settings(
+    navigation_node $parentnode,
+    stdClass $user,
+    context_user $context,
+    stdClass $course,
+    context_course $coursecontext
+) {
 
     // We use the realuser instead of the current user, so we can have debugging in "loginas" sessions too.
     $realuser = \core\session\manager::get_realuser();
